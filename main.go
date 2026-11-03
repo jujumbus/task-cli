@@ -122,21 +122,21 @@ func main() {
 				os.Exit(1)
 			}
 
-			if len(os.Args) >= 3 && os.Args[2] == "done" {
+			if len(os.Args) == 3 && os.Args[2] == "done" {
 				fmt.Println("Выполненные задачи:\n")
 				for _, task := range allTasks {
 					if task.Status == StatusDone {
 						printTask(task)
 					}
 				}
-			} else if len(os.Args) >= 3 && os.Args[2] == "progress" {
+			} else if len(os.Args) == 3 && os.Args[2] == "progress" {
 				fmt.Println("Задачи в процессе:\n")
 				for _, task := range allTasks {
 					if task.Status == StatusProgress {
 						printTask(task)
 					}
 				}
-			} else if len(os.Args) >= 3 && os.Args[2] == "todo" {
+			} else if len(os.Args) == 3 && os.Args[2] == "todo" {
 				fmt.Println("Задачи к которым ещё не приступил:\n")
 				for _, task := range allTasks {
 					if task.Status == StatusToDo {
@@ -197,8 +197,8 @@ func main() {
 
 	case "delete":
 		{
-			if len(os.Args) < 3 {
-				fmt.Fprintln(os.Stderr, "Не введён ID задачи")
+			if len(os.Args) != 3 {
+				fmt.Fprintln(os.Stderr, "Проверьте формат команды: укажите ровно один ID и не добавляйте лишних аргументов")
 				os.Exit(1)
 			}
 
@@ -241,8 +241,8 @@ func main() {
 
 	case "done":
 		{
-			if len(os.Args) < 3 {
-				fmt.Fprintln(os.Stderr, "Не введён ID задачи")
+			if len(os.Args) != 3 {
+				fmt.Fprintln(os.Stderr, "Проверьте формат команды: укажите ровно один ID и не добавляйте лишних аргументов")
 				os.Exit(1)
 			}
 
@@ -276,8 +276,8 @@ func main() {
 
 	case "progress":
 		{
-			if len(os.Args) < 3 {
-				fmt.Fprintln(os.Stderr, "Не введён ID задачи")
+			if len(os.Args) != 3 {
+				fmt.Fprintln(os.Stderr, "Проверьте формат команды: укажите ровно один ID и не добавляйте лишних аргументов")
 				os.Exit(1)
 			}
 
