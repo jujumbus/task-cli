@@ -309,11 +309,30 @@ func main() {
 			fmt.Println("Статус задачи обновлён успешно")
 		}
 
+	case "help":
+		{
+			if len(os.Args) != 2 {
+				fmt.Fprintln(os.Stderr, "Команда help не принимает дополнительные аргументы")
+				os.Exit(1)
+			}
+
+			fmt.Println("Доступные команды:")
+			fmt.Println("help - Показать список доступных команд")
+			fmt.Println("add <описание> - Создать задачу")
+			fmt.Println("list - Список задач")
+			fmt.Println("list done - Показать выполненные задачи")
+			fmt.Println("list progress - Показать задачи в процессе")
+			fmt.Println("list todo - Показать задачи, к которым ещё не приступили")
+			fmt.Println("update <ID> <описание> - Изменить описание задачи")
+			fmt.Println("delete <ID> - Удалить указанную задачу")
+			fmt.Println("done <ID> - Отметить задачу как выполненную")
+			fmt.Println("progress <ID> - Отметить задачу как находящуюся в процессе")
+		}
+
 	default:
 		{
 			fmt.Fprintln(os.Stderr, "Неизвестная команда:", command)
 			os.Exit(1)
 		}
-
 	}
 }
